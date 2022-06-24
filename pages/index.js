@@ -2,15 +2,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 export default function Home() {
-  const router = useRouter()
-  useEffect(() => {
-    // Always do navigations after the first render
-    router.push('/?counter=10', undefined, { shallow: true })
-  }, [])
+  console.log(1);
 
-  useEffect(() => {
-    // The counter changed!
-  }, [router.query.counter])
+  const router = useRouter()
+  typeof window !== 'undefined' ? console.log('前端') : console.log('后端')
+  let names = 'about'
   return (
     <ul>
       <li>
@@ -29,7 +25,7 @@ export default function Home() {
         </Link>
       </li>
       <li>
-        <button onClick={() => router.push('/about')}>
+        <button onClick={() => router.push(`/${names}`)}>
           Click here to read more
         </button>
       </li>
